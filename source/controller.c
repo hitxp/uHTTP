@@ -58,7 +58,10 @@ int serve(char * rootdir)
     if ((result = resolve(path, ext, params)) == 1)
     {
         filepath[0] = '\0';
-        strcat(filepath, rootdir);
+        //strcat(filepath, rootdir);
+        //shouldn't copy rootdir to filepath after chdir
+        //copy "." to filepath instead
+        strcat(filepath, ".");
         strcat(filepath, path);
         do_cgi(filepath, ext, params);
         return 0;
